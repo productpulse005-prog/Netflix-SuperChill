@@ -162,7 +162,7 @@ export function recommendForLearning(goal: LearningGoal): Recommendation[] {
       const relevance = topicMatch ? Math.min(100, content.learningRelevance + 10) : Math.max(25, content.learningRelevance - 35);
       const calculatedScore = clamp(relevance * 0.58 + content.ageSuitability * 0.22 + content.engagementPotential * 0.14 + content.popularity * 0.06);
       const score = topic.includes("climate") ? (content.id === "walle" ? 94 : Math.min(93, calculatedScore)) : calculatedScore;
-      const profile: Profile = { id: "teacher", name: "Teacher goal", initials: "✦", color: "#8B5CF6", genres: ["Educational"] };
+      const profile: Profile = { id: "guide", name: "Learning goal", initials: "✦", color: "#8B5CF6", genres: ["Educational"] };
       return { content, score, memberMatches: [{ profile, score, reasons: [`${content.learningRelevance}% learning relevance`] }], reasons: [`Strong connection to ${content.themes.slice(0, 3).join(", ").toLowerCase()}`, `Age suitability for ${goal.grade}`, `${content.engagementPotential}% engagement potential`], groupFit: [] };
     })
     .sort((a, b) => b.score - a.score)
