@@ -14,7 +14,7 @@ CHILL is a clearly labelled concept/prototype recommendation and engagement laye
 
 ## Key flows
 1. Home shows a Netflix-inspired shell, asks “Watch solo or watch together?”, includes the prototype disclaimer, and presents “Single or Shared Picks” alongside “From contetnt to lesson”.
-2. Watch Together: choose Couple/Friends/Family/Custom, select seeded profiles or add up to three custom named participants with genre preference chips, choose mood/time, receive ranked group picks, and open “Why this?” explainability.
+2. Watch Together: choose Couple/Friends/Family/Custom, select seeded profiles or add up to three custom named participants with genre preference chips, choose mood/time, receive ranked group picks, and open “Why this?” explainability. Friends and Custom groups also expose a clearly labelled demo invite with a QR-style preview, room code, copyable link, and no-login guest form; Couple and Family do not show this invite. The invite does not live-sync across devices.
 3. Chill & Learn: teacher can start with Climate Change, Space Science, History & Civil Rights, Media Literacy, or Ethics (or enter a custom topic), receives ranked content with dynamic learning metrics, builds a lesson, uses the simulated player and five timestamped questions, pauses for discussion, and completes the lesson. WALL-E remains the Climate Change demo top pick.
 
 ## Recommendation logic
