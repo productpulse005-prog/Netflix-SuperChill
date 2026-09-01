@@ -1,0 +1,65 @@
+{
+  "theme": "dark",
+  "archetype": "Archetype 5: Luxury & Cinematic Entertainment (Netflix Red + Velvet Obsidian + Neon Violet Intelligence Glow)",
+  "fonts": {
+    "heading": "'Geist Variable', 'Outfit', sans-serif",
+    "display": "'Outfit', 'Plus Jakarta Sans', sans-serif",
+    "body": "'Geist Variable', 'Inter', sans-serif",
+    "mono": "'JetBrains Mono Variable', 'IBM Plex Mono', monospace"
+  },
+  "colors": {
+    "background": "#0B0C0E",
+    "background_elevated": "#14161B",
+    "card_surface": "#1A1D24",
+    "netflix_red": "#E50914",
+    "netflix_red_hover": "#F40612",
+    "netflix_red_glow": "rgba(229, 9, 20, 0.45)",
+    "chill_violet": "#8B5CF6",
+    "chill_violet_glow": "rgba(139, 92, 246, 0.4)",
+    "chill_cyan": "#06B6D4",
+    "text_primary": "#FFFFFF",
+    "text_secondary": "#A1A1AA",
+    "text_muted": "#71717A",
+    "border_subtle": "rgba(255, 255, 255, 0.1)",
+    "border_active": "rgba(229, 9, 20, 0.6)",
+    "overlay_backdrop": "rgba(11, 12, 14, 0.85)"
+  },
+  "visual_enhancers": {
+    "cinematic_vignette": "radial-gradient(ellipse at 50% 30%, rgba(229, 9, 20, 0.12) 0%, rgba(11, 12, 14, 0.95) 85%)",
+    "ambient_glass": "backdrop-blur-xl bg-[#14161B]/80 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]",
+    "glow_beam": "shadow-[0_0_25px_rgba(229,9,20,0.25)]",
+    "chill_ai_badge": "bg-gradient-to-r from-violet-600/30 to-fuchsia-600/30 border border-violet-500/40 text-violet-200"
+  },
+  "image_urls": {
+    "hero_banner": "https://images.unsplash.com/photo-1620145648299-f926ac0a9470?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNDR8MHwxfHNlYXJjaHwyfHxjaW5lbWElMjBtb3ZpZSUyMGRyYW1hJTIwZGFya3xlbnwwfHx8fDE3ODgyNjA5MjN8MA&ixlib=rb-4.1.0&q=85",
+    "scifi_show": "https://images.unsplash.com/photo-1637158539893-66237b2f5e9f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzR8MHwxfHNlYXJjaHwxfHxzcGFjZSUyMHNjaWZpJTIwZnV0dXJpc3RpY3xlbnwwfHx8fDE3ODgyNjA5MjN8MA&ixlib=rb-4.1.0&q=85",
+    "nature_earth": "https://images.unsplash.com/photo-1770723965117-cffbc9e307a2?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDF8MHwxfHNlYXJjaHwxfHxuYXR1cmUlMjBkb2N1bWVudGFyeSUyMHBsYW5ldCUyMGVhcnRofGVufDB8fHx8MTc4ODI2MDkyM3ww&ixlib=rb-4.1.0&q=85",
+    "cyber_future": "https://images.unsplash.com/photo-1636347172071-6d17b1139816?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzR8MHwxfHNlYXJjaHwzfHxzcGFjZSUyMHNjaWZpJTIwZnV0dXJpc3RpY3xlbnwwfHx8fDE3ODgyNjA5MjN8MA&ixlib=rb-4.1.0&q=85",
+    "cinema_hall": "https://images.unsplash.com/photo-1561722798-9a732d141027?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNDR8MHwxfHNlYXJjaHw0fHxjaW5lbWElMjBtb3ZpZSUyMGRyYW1hJTIwZGFya3xlbnwwfHx8fDE3ODgyNjA5MjN8MA&ixlib=rb-4.1.0&q=85"
+  },
+  "layout_and_grids": {
+    "hero_section": "relative min-h-[520px] lg:min-h-[640px] flex items-center px-6 lg:px-16 pt-24 pb-16 overflow-hidden",
+    "netflix_row": "flex gap-4 overflow-x-auto pb-6 pt-2 scrollbar-none snap-x",
+    "card_aspect": "aspect-[16/9] sm:aspect-[2/3] lg:aspect-[16/10] rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105 hover:z-20 hover:shadow-2xl",
+    "modal_bento": "grid grid-cols-1 md:grid-cols-12 gap-6 p-6"
+  },
+  "component_hierarchy": [
+    "Navbar: Logo NETFLIX + CHILL Sparkle Badge, Nav links (Home, TV Shows, Movies, My List, CHILL ✨), Profile switcher / Demo badge",
+    "Hero: Cinematic preview banner with CHILL Layer CTA buttons ('Try Watch Together', 'Try Chill & Learn')",
+    "WatchTogetherModal / Page: Step 1 Group Select (Couple, Friends, Family, Custom) -> Step 2 Participants (Aditi, Rahul, custom) -> Step 3 Vibe/Preferences (Mood, Duration, Exclusions) -> Step 4 Sweet Spot Calculation animation -> Step 5 Recommendation row with 'Why This' explainability modal",
+    "ChillAndLearnModal / Page: Step 1 Teacher Setup (Topic: Climate Change, Grade: 8, Duration: 45m, Goal: Causes & Effects) -> Step 2 AI Match (WALL-E 94% Learning Match) -> Step 3 Simulated Player with interactive timeline markers, Pause & Discuss cards, Question Generator, and Lesson Completion Summary",
+    "SimulatedPlayer: Fullscreen/custom video canvas with timeline pins, Ask Students triggers, talking points overlay, exit question check, notes recap",
+    "ContentRows: Netflix Trending, CHILL Top Picks for Your Group, Chill & Learn Recommended Lessons, Netflix Originals"
+  ],
+  "accessibility_and_testing": {
+    "data_test_ids": "MANDATORY: Every button, group option card, participant toggle, slider, question action, and explainability trigger must have explicit data-testid attributes (e.g., data-testid='watch-together-btn', data-testid='participant-aditi', data-testid='group-match-score', data-testid='ask-students-btn', data-testid='continue-watching-btn')",
+    "contrast": "Text AA compliant (minimum 4.5:1 for body on #0B0C0E, 3:1 for large headers). Overlays must use opaque crystal backdrop to guarantee zero visual collisions."
+  },
+  "instructions_to_main_agent": [
+    "Position clearly as 'CHILL — Concept / Prototype' layered on top of Netflix UI with disclaimer banners.",
+    "Implement full deterministic recommendation algorithm for group compatibility and learning relevance.",
+    "Provide interactive Seeded profiles: Aditi (Sci-Fi, Thriller, Mystery) & Rahul (Comedy, Romance, Sci-Fi) for immediate one-click demo testing.",
+    "Deliver simulated video player with rich interactive timestamps (00:07:42, 00:14:20, 00:27:15, 00:35:10, 00:41:05) and Pause & Discuss prompts.",
+    "Include over 20+ recognizable Netflix-style movie/show catalogue items spanning all major genres."
+  ]
+}
