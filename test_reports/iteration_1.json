@@ -1,0 +1,57 @@
+{
+  "passed": 6,
+  "failed": 0,
+  "bugs": [],
+  "action_items": [
+    {
+      "type": "note",
+      "severity": "low",
+      "description": "Mood pill data-testid values contain a double dash (e.g. 'mood--funny', 'mood--thought-provoking') for all moods except Feel-good, caused by `mood.slice(2)` retaining a leading space after stripping the emoji in Home.tsx (moodOptions handling). Purely a testid/attribute cosmetic quirk — the UI labels and click behavior are correct and unaffected. Not a functional bug; noted for future test-id hygiene."
+    }
+  ],
+  "retest_needed": false,
+  "checks": [
+    {
+      "criterion": "A reviewer can choose Custom from Watch Together and proceed to participant setup",
+      "name": "custom-opens-member-step",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "Selected group-type-custom, clicked group-continue-button, member step showed custom-member-builder visible, member-count text '0 selected' confirming seeded profiles are not force-selected."
+    },
+    {
+      "criterion": "A reviewer can add named custom participants with lightweight genre preference chips",
+      "name": "custom-add-participant",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "Filled custom-member-name-input with 'tscheck-Alex', toggled custom-preference-thriller chip (Sci-Fi default kept), clicked custom-member-add-button. custom-member-count showed '1 custom person added' and new participant-custom-* card contained name 'tscheck-Alex' plus chips 'Sci-Fi' and 'Thriller'."
+    },
+    {
+      "criterion": "The custom group builder enforces its lightweight scope",
+      "name": "custom-builder-enforces-max-three",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "custom-member-limit progressed 0/3 -> 1/3 -> 2/3 -> 3/3 after adding tscheck-P1/P2/P3. After reaching 3, custom-member-add-button became disabled with a 4th name entered, and custom-member-count remained '3 custom people added', confirming the cap is enforced."
+    },
+    {
+      "criterion": "Custom participants feed the deterministic recommendation flow",
+      "name": "custom-recommendation-shows-names",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "Added tscheck-Alex (Sci-Fi+Thriller) and tscheck-Sam (Sci-Fi+Comedy), selected mood '--funny' and duration 60-90min, clicked find-group-picks. group-picks-heading rendered and group-picks-subtitle text contained both 'tscheck-Alex' and 'tscheck-Sam'."
+    },
+    {
+      "criterion": "Explainability reflects custom people and matched taste signals",
+      "name": "custom-explainability-shows-member-matches",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "Opened Why this? on top result; why-modal showed 2 why-member-custom-* cards, e.g. 'tscheck-Alex 91% match' with reasons 'Sci-Fi preference' and 'Thriller preference', and 'tscheck-Sam 79% match' with 'Sci-Fi preference' - reasons tied to genres chosen for each custom person and present in the recommended title (Stranger Things, Sci-Fi/Thriller)."
+    },
+    {
+      "criterion": "Existing seeded-profile Watch Together remains available",
+      "name": "couple-flow-seeded-profiles",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "Couple group type selected by default; on members step, participant-aditi and participant-rahul cards were visible and pre-selected (class 'selected'); members-continue-button advanced to preferences-question step successfully."
+    }
+  ]
+}

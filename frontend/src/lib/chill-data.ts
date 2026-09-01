@@ -122,8 +122,8 @@ const durationLimit: Record<string, number> = { "<30 min": 29, "30–60 min": 60
 
 const clamp = (value: number) => Math.max(42, Math.min(98, Math.round(value)));
 
-export function recommendForGroup(profileIds: string[], preference: GroupPreference): Recommendation[] {
-  const selected = PROFILES.filter((profile) => profileIds.includes(profile.id));
+export function recommendForGroup(profileIds: string[], preference: GroupPreference, profiles: Profile[] = PROFILES): Recommendation[] {
+  const selected = profiles.filter((profile) => profileIds.includes(profile.id));
   const sharedGenres = selected.length > 1 ? selected[0].genres.filter((genre) => selected.every((profile) => profile.genres.includes(genre))) : [];
   const limit = durationLimit[preference.duration] ?? 240;
 
