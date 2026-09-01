@@ -82,7 +82,43 @@ const ART = {
   future: "https://images.unsplash.com/photo-1636347172071-6d17b1139816?auto=format&fit=crop&w=900&q=85",
 };
 
-export const CATALOGUE: Content[] = [
+const TITLE_ARTWORK: Record<string, string> = {
+  "martian": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Astronaut_working_on_Mars.jpg/960px-Astronaut_working_on_Mars.jpg",
+  "walle": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Robot_de_tri.jpg/960px-Robot_de_tri.jpg",
+  "stranger-things": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/Cold_wave_and_dense_fog_disturbed_the_routine_life_in_Delhi_on_December_27%2C_2010._Picture_shows_traffic_out_of_the_gear_under_the_visibility_almost_nil.jpg/960px-Cold_wave_and_dense_fog_disturbed_the_routine_life_in_Delhi_on_December_27%2C_2010._Picture_shows_traffic_out_of_the_gear_under_the_visibility_almost_nil.jpg",
+  "inception": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Reflection_in_skyscraper_-_geograph.org.uk_-_1949892.jpg/960px-Reflection_in_skyscraper_-_geograph.org.uk_-_1949892.jpg",
+  "knives-out": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/1800s_kitchen.jpg/960px-1800s_kitchen.jpg",
+  "brooklyn-99": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/94/Brooklyn_Bridge%2C_looking_from_Brooklyn_toward_old_New_York_%28NYPL_b11708026-G91F173_156F%29.tiff/lossy-page1-960px-Brooklyn_Bridge%2C_looking_from_Brooklyn_toward_old_New_York_%28NYPL_b11708026-G91F173_156F%29.tiff.jpg",
+  "about-time": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/%E2%80%9CBovet%E2%80%9D_pocket_watch_with_pearls_and_painted_enamel.tif/lossy-page1-960px-%E2%80%9CBovet%E2%80%9D_pocket_watch_with_pearls_and_painted_enamel.tif.jpg",
+  "our-planet": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/The_Earth_seen_from_Apollo_17.jpg/960px-The_Earth_seen_from_Apollo_17.jpg",
+  "explained": "https://upload.wikimedia.org/wikipedia/commons/4/49/Genomic-Encyclopedia-of-Bacteria-and-Archaea-Sequencing-a-Myriad-of-Type-Strains-pbio.1001920.g002.jpg",
+  "mitchells": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Ameca_Generation_1.jpg",
+  "klaus": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/R%C3%98LDAL_STAVKYRKJE_stavkirke_kirke_13th_century_wooden_stave_church_Ullensvang_Norway_Building_exterior_Minnestein_bauta_Memorial_stone_1905_Valley_Houses_homes_Road_lamppost_Mountains_Winter_Sn%C3%B8_snow_April_Sunny_2022-0.jpg/960px-thumbnail.jpg",
+  "hidden-figures": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/Katherine_Johnson_at_NASA%2C_in_1966.jpg/960px-Katherine_Johnson_at_NASA%2C_in_1966.jpg",
+  "interstellar": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Black_Hole_Week-_Black_Hole_GIFs_%28SVS14132_-_BHW_Supermassive_Binary_Black_Hole_Simulation%29.gif",
+  "social-dilemma": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Social_network_-_by_JClks.jpg/960px-Social_network_-_by_JClks.jpg",
+  "love-actually": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/Trafalgar_Square_Christmas_tree9.jpg/960px-Trafalgar_Square_Christmas_tree9.jpg",
+  "the-good-place": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Dramatic_cloudscape_on_early_morning.jpg/960px-Dramatic_cloudscape_on_early_morning.jpg",
+  "enola-holmes": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Victorian_postbox_on_Holborn%2C_London_-_geograph.org.uk_-_6380844.jpg/960px-Victorian_postbox_on_Holborn%2C_London_-_geograph.org.uk_-_6380844.jpg",
+  "chef": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Robot_chef_cooking_with_spices.png/960px-Robot_chef_cooking_with_spices.png",
+  "beautiful-mind": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/Blackboard_gras.svg/960px-Blackboard_gras.svg.png",
+  "money-heist": "https://upload.wikimedia.org/wikipedia/commons/3/35/Ocean_National_Bank_vault_door.png",
+  "spiderverse": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Mural_at_the_Albany%2C_New_York_City_Hall_%2834064554234%29.jpg/960px-Mural_at_the_Albany%2C_New_York_City_Hall_%2834064554234%29.jpg",
+  "the-crown": "https://upload.wikimedia.org/wikipedia/commons/1/11/Queen_Elizabeth_II_official_portrait_for_1959_tour_%28retouched%29_%28cropped%29_%283-to-4_aspect_ratio%29.jpg",
+  "mad-max": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/Desert_Warrior_Dakar_2008_EVJPhoto.jpg/960px-Desert_Warrior_Dakar_2008_EVJPhoto.jpg",
+  "get-out": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Haunted_house_of_the_Richard_Speck_murders.jpg/960px-Haunted_house_of_the_Richard_Speck_murders.jpg",
+  "quiet-place": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/D%C3%BClmen%2C_Merfeld%2C_Feldweg_am_M%C3%BChlenbach_--_2021_--_4278-80.jpg/960px-D%C3%BClmen%2C_Merfeld%2C_Feldweg_am_M%C3%BChlenbach_--_2021_--_4278-80.jpg",
+  "john-wick": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Tokyo_Tower%2C_Minato_City.jpg/960px-Tokyo_Tower%2C_Minato_City.jpg",
+  "jumanji": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Cheow_Lan_Lake%2C_Rainforest%2C_Khao_Sok%2C_Thailand.jpg/960px-Cheow_Lan_Lake%2C_Rainforest%2C_Khao_Sok%2C_Thailand.jpg",
+  "crazy-rich-asians": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b0/Singapore_Marina_Bay_Dusk_2018-02-27.jpg/960px-Singapore_Marina_Bay_Dusk_2018-02-27.jpg",
+  "paddington-2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/Paddington_station_MMB_54.jpg/960px-Paddington_station_MMB_54.jpg",
+  "coco": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/Day_of_the_Dead_altar_in_Oaxaca_de_Juarez.jpg/960px-Day_of_the_Dead_altar_in_Oaxaca_de_Juarez.jpg",
+  "school-of-rock": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Musician_playing_electric_guitar_on_stage_in_Vienna.jpg",
+  "the-raid": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Jakarta_Panorama.jpg/960px-Jakarta_Panorama.jpg",
+  "imitation-game": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Enigma_rotor_exploded_view.png/960px-Enigma_rotor_exploded_view.png",
+};
+
+const BASE_CATALOGUE: Content[] = [
   { id: "martian", title: "The Martian", year: 2015, kind: "Movie", genres: ["Sci-Fi", "Comedy", "Drama"], moods: ["Relaxed", "Feel-good", "Thought-provoking"], runtime: 144, language: "English", themes: ["Survival", "Teamwork", "Science"], popularity: 93, ageSuitability: 92, watchedBy: [], learningTopics: ["space", "science", "problem solving"], learningRelevance: 88, engagementPotential: 94, artwork: ART.redPlanet, synopsis: "A stranded astronaut turns science, grit and a little comedy into a way home." },
   { id: "walle", title: "WALL-E", year: 2008, kind: "Movie", genres: ["Animation", "Family", "Sci-Fi"], moods: ["Feel-good", "Emotional", "Thought-provoking"], runtime: 98, language: "English", themes: ["Sustainability", "Consumerism", "Human impact"], popularity: 96, ageSuitability: 96, watchedBy: [], learningTopics: ["climate change", "environmental sustainability", "consumer behavior", "human impact"], learningRelevance: 94, engagementPotential: 91, artwork: ART.nature, synopsis: "In a quiet future, one small robot discovers the enormous story of what humans leave behind." },
   { id: "stranger-things", title: "Stranger Things", year: 2016, kind: "Series", genres: ["Sci-Fi", "Thriller", "Mystery"], moods: ["Thrilling", "Thought-provoking"], runtime: 52, language: "English", themes: ["Friendship", "The unknown", "Courage"], popularity: 98, ageSuitability: 78, watchedBy: [], learningTopics: [], learningRelevance: 35, engagementPotential: 98, artwork: ART.future, synopsis: "A group of friends uncover a mystery that bends the boundaries of their small town." },
@@ -117,6 +153,11 @@ export const CATALOGUE: Content[] = [
   { id: "the-raid", title: "The Raid", year: 2011, kind: "Movie", genres: ["Action", "Thriller"], moods: ["Thrilling"], runtime: 101, language: "Indonesian", themes: ["Survival", "Duty", "Courage"], popularity: 88, ageSuitability: 58, watchedBy: [], learningTopics: [], learningRelevance: 24, engagementPotential: 96, artwork: ART.future, synopsis: "An elite team becomes trapped inside a tower controlled by a ruthless criminal network." },
   { id: "imitation-game", title: "The Imitation Game", year: 2014, kind: "Movie", genres: ["Drama", "History", "Thriller"], moods: ["Thought-provoking", "Emotional", "Thrilling"], runtime: 114, language: "English", themes: ["Codebreaking", "War", "Identity"], popularity: 91, ageSuitability: 86, watchedBy: [], learningTopics: ["history", "mathematics", "technology"], learningRelevance: 87, engagementPotential: 89, artwork: ART.astronaut, synopsis: "A brilliant mathematician leads a secret race to break an impossible wartime code." },
 ];
+
+export const CATALOGUE: Content[] = BASE_CATALOGUE.map((content) => ({
+  ...content,
+  artwork: TITLE_ARTWORK[content.id] ?? content.artwork,
+}));
 
 export const LEARNING_QUESTIONS: LearningQuestion[] = [
   { id: "q1", timestamp: 462, timestampLabel: "00:07:42", type: "THINK & PREDICT", icon: "🧠", question: "Why do you think humans became so dependent on technology?", concepts: ["Cause", "Systems thinking"], difficulty: "Foundational" },

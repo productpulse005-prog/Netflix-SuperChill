@@ -1,0 +1,45 @@
+{
+  "passed": 5,
+  "failed": 0,
+  "bugs": [],
+  "action_items": [],
+  "retest_needed": false,
+  "checks": [
+    {
+      "criterion": "Home catalogue images load successfully",
+      "name": "home-images-load-and-artwork-domain",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "Trending, New Releases and Continue Watching rows each rendered >=6 images (24 total), every img had complete=true with naturalWidth>0 after load, and every src matched wikimedia.org (thumb./upload. subdomains)."
+    },
+    {
+      "criterion": "Recognizable catalogue titles use title-specific thematic artwork instead of repeated generic stock images / Artwork sources follow the chosen safe sourcing standard / Representative title and image pairings are semantically matched",
+      "name": "title-artwork-semantic-pairings",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "Via Chill & Learn Space Science topic, top-pick/alternate cards for The Martian, Hidden Figures and Interstellar resolved to Astronaut_working_on_Mars, Katherine_Johnson and Black_Hole wikimedia image URLs respectively; via History & Civil Rights topic, The Imitation Game and The Crown resolved to Enigma_rotor and Queen_Elizabeth wikimedia URLs. Source inspection of frontend/src/lib/chill-data.ts TITLE_ARTWORK confirms all 33 seeded ids (including walle->Robot_de_tri, crazy-rich-asians->Singapore_Marina_Bay, coco->Day_of_the_Dead) map to distinct wikimedia.org URLs."
+    },
+    {
+      "criterion": "Watch Together recommendations retain varied unique artwork",
+      "name": "watch-together-unique-artwork",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "Couple + Thrilling mood + 90-120min duration run returned 12 content-card-title-* cards; collected 12 img src values across the cards yielded a Set size >=10 unique URLs."
+    },
+    {
+      "criterion": "Artwork attribution is visible in the global footer",
+      "name": "footer-shows-wikimedia-attribution",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "site-footer text contains 'Thematic artwork is sourced from Wikimedia Commons under public-domain or Creative Commons terms; Netflix is a trademark of its respective owner.'"
+    },
+    {
+      "criterion": "Recognizable titles and prototype disclaimer remain intact",
+      "name": "home-disclaimer-and-titles-intact",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "hero-disclaimer text read 'Concept / Prototype · Demo metadata · Not affiliated with Netflix'; content-card-title-stranger-things (Trending row) and content-card-title-walle (Continue Watching row) rendered their exact recognizable titles."
+    }
+  ],
+  "notes": "Briefing's 7 acceptance criteria were covered by 5 browser checks (1 check jointly verifies 3 tightly-related artwork-mapping criteria: distinct thematic artwork, safe wikimedia sourcing, and specific semantic pairings). No new API-bearing surface was introduced by this feature (TITLE_ARTWORK is static frontend data), so no new backend test file was added; prior iterations' backend/browser suites (21 checks) remain green and unaffected."
+}

@@ -5,7 +5,7 @@ CHILL is a clearly labelled concept/prototype recommendation and engagement laye
 
 ## Data model
 - `Profile`: seeded Puja (Sci-Fi, Thriller, Mystery) and Rishi (Comedy, Romance, Sci-Fi), plus session-created custom participants
-- `Content`: 30+ seeded Netflix-style movies/shows/documentaries spanning comedy, horror, action, sci-fi, romance, thriller, animation, documentary, educational, and family-friendly examples, with genres, moods, runtime, language, themes, popularity, age suitability, watched status, learning topics, and learning relevance
+- `Content`: 30+ seeded Netflix-style movies/shows/documentaries spanning comedy, horror, action, sci-fi, romance, thriller, animation, documentary, educational, and family-friendly examples, with genres, moods, runtime, language, themes, popularity, age suitability, watched status, learning topics, and learning relevance. Each recognizable title is paired with distinct, thematically relevant Wikimedia Commons public-domain or Creative Commons artwork rather than an official copyrighted poster; attribution is retained in the footer.
 - `GroupPreference`: group mood, duration, language, avoid text, and selected members
 - `Recommendation`: content, deterministic score, member matches, reasons, and group fit
 - `LearningGoal`: topic, grade, duration, and objective
