@@ -1,0 +1,66 @@
+{
+  "passed": 8,
+  "failed": 0,
+  "bugs": [],
+  "action_items": [],
+  "retest_needed": false,
+  "checks": [
+    {
+      "criterion": "The locked brand hierarchy is clear on Home",
+      "name": "home-brand-hierarchy-locked",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "hero-title=SUPER CHILL, hero-question='Netflix knows what you like.', hero-description contains 'Super Chill' + 'understands how you want to experience it', exactly 2 hero CTAs (CHILL & RELAX / CHILL & LEARN) with locked subtitles 'Find something everyone will enjoy.' and 'Turn great content into a learning moment.'"
+    },
+    {
+      "criterion": "CHILL & RELAX uses the locked fast-context flow",
+      "name": "chill-relax-fast-context-flow",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "watch-heading='Find something everyone will enjoy'; exactly 3 group-type-* options (couple/friends/custom), combined text does not contain 'Family'; participant cards show names Puja and Rishi; mood-* and duration-* pills present on preferences step."
+    },
+    {
+      "criterion": "CHILL & RELAX returns transparent group recommendations",
+      "name": "chill-relax-transparent-group-picks",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "Couple + Relaxed + 90-120min submitted -> group-picks-heading='🍿 CHILL & RELAX PICKS', 12 content-card-title-* cards (>=10 unique titles); Why this? opened why-modal with title 'Why Super Chill picked this', why-modal-score containing 'Group Match', why-member-aditi/why-member-rahul individual reasoning, group-fit-heading present."
+    },
+    {
+      "criterion": "CHILL & LEARN begins with two distinct adult contexts",
+      "name": "chill-learn-entry-two-adult-contexts",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "learning-audience-step shows learn-context-child (My Child / Parent + Child) and learn-context-students (My Students / Teacher + Students); step text contains no child/student account language."
+    },
+    {
+      "criterion": "Parent + Child setup and recommendation are context-specific",
+      "name": "parent-child-setup-and-recommendation",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "learning-age-select options exactly ['Ages 5–7','Ages 8–10','Ages 11–13','Ages 14–16','Ages 17+']; selected Ages 5–7 + Space Science topic; results show learning-match-badge, learning-why reasoning, build-lesson-button labelled 'Explore Together'; clicking it reached lesson-player with lesson-age-band='Ages 5–7'."
+    },
+    {
+      "criterion": "Teacher + Students setup and recommendation are context-specific",
+      "name": "teacher-students-setup-context",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "learning-grade-select options exactly ['Primary','Grade 5–6','Grade 7–8','Grade 9–10','Grade 11–12']; learning-duration-select options exactly ['20 minutes','30 minutes','45 minutes','60 minutes','90 minutes']; topic + learning-objective-input present; build-lesson-button labelled 'Build Learning Experience'."
+    },
+    {
+      "criterion": "Interactive learning supports Watch → Ask → Pause → Discuss → Continue",
+      "name": "interactive-player-watch-ask-pause-discuss",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "lesson-video source resolves to a .webm CC0 file with player-demo-badge 'Concept player · CC0 footage'; 5 question-card-* entries each with Ask/Skip; question-difficulty-select changed to Stretch; generate-question-button clicked; Ask opened pause-discuss-modal ('Pause & Discuss') with a question; Answered button toggled to 'Answered ✓', Useful toggled, Continue closed the modal."
+    },
+    {
+      "criterion": "Session end uses final inclusive language and real session state",
+      "name": "session-end-final-inclusive-language",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "Answered one question and left a second un-answered; session-complete-screen shows title 'Session Complete', concepts-explored panel, questions-discussed panel containing only the Answered question's text (not the un-answered one), exit-question locked text 'What is one thing you would change or think differently about after watching this?', and parent-facing wording ('Explore together' / 'shared moment of curiosity'); Finish returned to home-screen."
+    }
+  ],
+  "notes": "All 8 briefing acceptance criteria are covered 1:1 by 8 new browser checks; the app is a pure client-side prototype (FastAPI backend only exposes the scaffold 'Hello World' route, no app-specific API), so no backend-test lane applies. Pre-existing checks from earlier iterations (couple-flow-*, custom-*, etc.) target an older/legacy code path in Home.tsx (Aditi/Rahul ids without Puja/Rishi name assertions, old single-step Chill & Learn) and were left untouched per the 'never touch seeded/prior artifacts unnecessarily' guidance; they still pass against current app since the underlying ids (aditi/rahul) are unchanged, only display names changed to Puja/Rishi, which the new checks explicitly verify."
+}

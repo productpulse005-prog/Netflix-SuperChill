@@ -48,6 +48,7 @@ export interface LearningGoal {
   grade: string;
   duration: string;
   objective: string;
+  context?: "parent" | "teacher";
 }
 
 export interface LearningQuestion {

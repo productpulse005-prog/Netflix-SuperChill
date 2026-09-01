@@ -1,24 +1,37 @@
-# CHILL — Living Product Spec
+# SUPER CHILL — Living Product Spec
 
-## What it does
-CHILL is a clearly labelled concept/prototype recommendation and engagement layer for a Netflix-style viewing experience. It is not a streaming app, is not affiliated with Netflix, and uses seeded demo metadata plus public/demo artwork.
+## Product definition
+SUPER CHILL is a clearly labelled concept/prototype intelligence layer inside a Netflix-style viewing experience. It is not a streaming service, Netflix competitor, chatbot, LMS, or official Netflix integration. Core thesis: “Netflix knows what you like. Super Chill understands how you want to experience it.”
+
+## Locked hierarchy
+- Netflix → SUPER CHILL
+- 🍿 CHILL & RELAX — “Find something everyone will enjoy.”
+- 🧠 CHILL & LEARN — “Turn great content into a learning moment.”
 
 ## Data model
 - `Profile`: seeded Puja (Sci-Fi, Thriller, Mystery) and Rishi (Comedy, Romance, Sci-Fi), plus session-created custom participants
-- `Content`: 30+ seeded Netflix-style movies/shows/documentaries spanning comedy, horror, action, sci-fi, romance, thriller, animation, documentary, educational, and family-friendly examples, with genres, moods, runtime, language, themes, popularity, age suitability, watched status, learning topics, and learning relevance. Each recognizable title is paired with distinct, thematically relevant Wikimedia Commons public-domain or Creative Commons artwork rather than an official copyrighted poster; attribution is retained in the footer.
-- `GroupPreference`: group mood, duration, language, avoid text, and selected members
-- `Recommendation`: content, deterministic score, member matches, reasons, and group fit
-- `LearningGoal`: topic, grade, duration, and objective
-- `LearningQuestion`: timestamp, type, prompt, concepts, and difficulty
+- `Content`: 30+ seeded Netflix-style titles across comedy, horror, action, sci-fi, romance, thriller, animation, documentary, educational, and family-friendly genres
+- `GroupPreference`: mood, duration, language, avoids, and selected members
+- `Recommendation`: deterministic score, individual matches, reasons, and group fit
+- `LearningGoal`: parent/teacher context, age or grade, topic, duration, and objective
+- `LearningQuestion`: timestamp, type, prompt, expected concepts, and difficulty
 - `Lesson`: selected learning content, goal, question ids, and covered concepts
 
 ## Key flows
-1. Home shows a Netflix-inspired shell, asks “Watch solo or watch together?”, and uses one hero button each for Watch Together and Chill & Learn with no duplicate feature cards. The only Netflix-style catalogue rows are Trending, New Releases, and Continue Watching.
-2. Watch Together: choose Couple, Friends, or Custom, select seeded profiles or add up to three custom named participants with genre preference chips, choose mood/time, receive ranked group picks, and open “Why this?” explainability. Friends and Custom groups also expose a clearly labelled demo invite with a QR-style preview, room code, copyable link, and no-login guest form; Couple does not show this invite. The invite does not live-sync across devices.
-3. Chill & Learn: an educator or parent can start with Climate Change, Space Science, History & Civil Rights, Media Literacy, or Ethics (or enter a custom topic), select a child age band, receive ranked content with dynamic learning metrics, and build a lesson. The lesson page prominently carries the selected age band into a real playable public CC0 demo clip. Questions stay hidden while playing; every adult-initiated pause opens one age-adjusted thought-provoking prompt with Answered and Continue Watching actions. The experience remains adult-led and children need no accounts. WALL-E remains the Climate Change demo top pick.
+1. Home: Netflix-inspired shell with SUPER CHILL hero, one CHILL & RELAX entry, one CHILL & LEARN entry, and only Trending, New Releases, and Continue Watching catalogue rows.
+2. CHILL & RELAX: choose Couple, Friends, or Custom Group; select seeded or custom participants; choose mood/time and optional constraints; receive 12 ranked group picks; open “Why this?” for transparent individual and group-fit reasoning. Friends and Custom Group retain the demo QR/room-code invite preview; it does not live-sync.
+3. CHILL & LEARN: first choose Parent + Child or Teacher + Students. Parent setup uses age, exploration topic, and optional understanding goal. Teacher setup uses grade, topic, class duration, and learning goal. Results show Learning Match and context-specific reasoning, then Explore Together or Build Learning Experience.
+4. Interactive learning: real public CC0 footage inside a clearly labelled concept player, five timestamped contextual questions, Ask/Skip, manual-pause prompting, difficulty adjustment, generated follow-up, Answered/Useful marking, Pause & Discuss, and Continue.
+5. Session end: “Session Complete,” concepts explored, only questions marked Answered, one exit question, and parent-friendly language.
 
 ## Recommendation logic
-The frontend demo engine in `frontend/src/lib/chill-data.ts` is deterministic and modular. Group scoring accepts both seeded and session-created profiles, then combines individual genre compatibility, shared-genre bonus, mood, runtime, language, popularity, and explicit avoid penalties. Learning scoring combines topic relevance, age suitability, engagement potential, and popularity, with the Climate Change/WALL-E demo case pinned to the specified 94% match. It can be replaced by a real ML/LLM/embedding service later without changing the UI contract.
+The frontend engine in `frontend/src/lib/chill-data.ts` is deterministic and modular. Group scoring combines individual and shared genre compatibility, mood, runtime, language, popularity, and explicit avoid penalties rather than a simple average. Learning scoring combines topic relevance, age suitability, engagement potential, and popularity. WALL-E remains the pinned Climate Change demo case at 94%. A future ML/embedding/LLM ranker can replace this layer without changing the UI contract.
 
-## Auth and persistence
-No authentication, student accounts, or student dashboard. My List is persisted locally in browser localStorage for the demo. The lesson and recommendations are session state only.
+## Content and artwork
+Recognizable titles use seeded demo metadata and distinct thematic Wikimedia Commons public-domain or Creative Commons artwork, not official copyrighted posters. Attribution appears in the footer. Availability on Netflix is not claimed.
+
+## Auth, membership, and persistence
+No authentication, child/student accounts, dashboards, grades, assignments, payments, pricing, or separate SUPER CHILL subscription. The concept assumes an existing Netflix membership. My List uses browser localStorage; recommendations and learning sessions use local session state.
+
+## Measurement hypotheses
+Future instrumentation could measure time-to-selection, recommendation acceptance, group-match satisfaction, repeat group usage, session start, learning activation, content selection, question usage/usefulness, session completion, repeat learning usage, and incremental play rate. No benchmark is presented as proven.

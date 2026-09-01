@@ -1,0 +1,15 @@
+import { ArrowRight, Check } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import type { LearningGoal } from "@/lib/chill-data";
+
+interface SessionCompleteProps {
+  goal: LearningGoal;
+  questions: string[];
+  onFinish: () => void;
+  onHome: () => void;
+}
+
+export default function SessionComplete({ goal, questions, onFinish, onHome }: SessionCompleteProps) {
+  const isParent = goal.context !== "teacher";
+  return <div className="flow-shell flex min-h-screen items-center px-5 py-28 sm:px-10" data-testid="session-complete-screen"><div className="mx-auto w-full max-w-3xl"><div className="mb-7 flex size-14 items-center justify-center rounded-2xl bg-emerald-400/15 text-emerald-300"><Check className="size-7" /></div><div className="mb-2 text-[10px] font-bold uppercase tracking-[.22em] text-cyan-300">{isParent ? "Explore together recap" : "Learning experience recap"}</div><h1 className="font-display text-5xl font-black tracking-tight text-white" data-testid="session-complete-title">Session Complete</h1><p className="mt-3 max-w-xl text-zinc-400">{isParent ? "You turned screen time into a shared moment of curiosity." : "You turned great content into a guided moment for discussion."}</p><div className="mt-10 grid gap-4 sm:grid-cols-2"><div className="summary-panel" data-testid="concepts-explored"><div className="summary-label">Concepts explored</div><div className="mt-4 flex flex-wrap gap-2">{[goal.topic, "Evidence", "Real-world connection", "Perspective"].map((concept) => <span key={concept} className="rounded-full bg-cyan-400/10 px-3 py-2 text-xs text-cyan-200">{concept}</span>)}</div></div><div className="summary-panel" data-testid="questions-discussed"><div className="summary-label">Questions discussed</div>{questions.length ? <ul className="mt-4 space-y-3 text-sm text-zinc-300">{questions.map((question) => <li key={question}><Check className="mr-2 inline size-3.5 text-emerald-300" />{question}</li>)}</ul> : <p className="mt-4 text-sm leading-6 text-zinc-500">No questions were marked Answered in this session.</p>}</div></div><div className="mt-5 rounded-xl border border-violet-400/20 bg-violet-500/[.06] p-5" data-testid="exit-question"><div className="summary-label text-violet-200">Exit question</div><p className="mt-3 text-lg font-semibold text-white">What is one thing you would change or think differently about after watching this?</p></div><div className="mt-8 flex flex-wrap gap-3"><Button onClick={onFinish} className="bg-white px-6 font-bold text-black hover:bg-zinc-200" data-testid="finish-session-button">Finish <ArrowRight className="ml-2 size-4" /></Button><Button variant="ghost" onClick={onHome} className="text-zinc-400 hover:bg-white/10 hover:text-white" data-testid="complete-home-button">Back to SUPER CHILL</Button></div></div></div>;
+}
