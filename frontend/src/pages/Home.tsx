@@ -14,7 +14,7 @@ type LearnStep = "setup" | "results";
 
 const moodOptions = ["😂 Funny", "😌 Relaxed", "😱 Thrilling", "❤️ Emotional", "🧠 Thought-provoking", "✨ Feel-good"];
 const timeOptions = ["<30 min", "30–60 min", "60–90 min", "90–120 min", "2h+"];
-const groupOptions = [{ id: "couple", label: "Couple", icon: "❤️", description: "Two takes, one sweet spot" }, { id: "friends", label: "Friends", icon: "👯", description: "Find the group chat pick" }, { id: "family", label: "Family", icon: "👨‍👩‍👧", description: "Something for everyone" }, { id: "custom", label: "Custom", icon: "✨", description: "Build your own mix" }];
+const groupOptions = [{ id: "couple", label: "Couple", icon: "❤️", description: "Two takes, one sweet spot" }, { id: "friends", label: "Friends", icon: "👯", description: "Find the group chat pick" }, { id: "custom", label: "Custom", icon: "✨", description: "Build your own mix" }];
 const learningTopicOptions = [
   { label: "Climate Change", icon: "🌍", objective: "Understand the causes and effects of climate change." },
   { label: "Space Science", icon: "🚀", objective: "Explore how science, mathematics and teamwork help people understand space." },

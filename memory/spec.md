@@ -4,7 +4,7 @@
 CHILL is a clearly labelled concept/prototype recommendation and engagement layer for a Netflix-style viewing experience. It is not a streaming app, is not affiliated with Netflix, and uses seeded demo metadata plus public/demo artwork.
 
 ## Data model
-- `Profile`: seeded Puja (Sci-Fi, Thriller, Mystery), Rishi (Comedy, Romance, Sci-Fi), and Family profile
+- `Profile`: seeded Puja (Sci-Fi, Thriller, Mystery) and Rishi (Comedy, Romance, Sci-Fi), plus session-created custom participants
 - `Content`: 20+ seeded Netflix-style movies/shows/documentaries with genres, moods, runtime, language, themes, popularity, age suitability, watched status, learning topics, and learning relevance
 - `GroupPreference`: group mood, duration, language, avoid text, and selected members
 - `Recommendation`: content, deterministic score, member matches, reasons, and group fit
@@ -14,7 +14,7 @@ CHILL is a clearly labelled concept/prototype recommendation and engagement laye
 
 ## Key flows
 1. Home shows a Netflix-inspired shell, asks “Watch solo or watch together?”, and uses one hero button each for Watch Together and Chill & Learn with no duplicate feature cards. The only Netflix-style catalogue rows are Trending, New Releases, and Continue Watching.
-2. Watch Together: choose Couple/Friends/Family/Custom, select seeded profiles or add up to three custom named participants with genre preference chips, choose mood/time, receive ranked group picks, and open “Why this?” explainability. Friends and Custom groups also expose a clearly labelled demo invite with a QR-style preview, room code, copyable link, and no-login guest form; Couple and Family do not show this invite. The invite does not live-sync across devices.
+2. Watch Together: choose Couple, Friends, or Custom, select seeded profiles or add up to three custom named participants with genre preference chips, choose mood/time, receive ranked group picks, and open “Why this?” explainability. Friends and Custom groups also expose a clearly labelled demo invite with a QR-style preview, room code, copyable link, and no-login guest form; Couple does not show this invite. The invite does not live-sync across devices.
 3. Chill & Learn: an educator or parent can start with Climate Change, Space Science, History & Civil Rights, Media Literacy, or Ethics (or enter a custom topic), select a child age band, receive ranked content with dynamic learning metrics, build a lesson, use the simulated player and five timestamped questions, pause for discussion, and complete the lesson. The experience remains adult-led and children need no accounts. WALL-E remains the Climate Change demo top pick.
 
 ## Recommendation logic

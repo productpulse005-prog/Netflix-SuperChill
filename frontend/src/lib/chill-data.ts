@@ -71,7 +71,6 @@ export interface Lesson {
 export const PROFILES: Profile[] = [
   { id: "aditi", name: "Puja", initials: "P", color: "#E50914", genres: ["Sci-Fi", "Thriller", "Mystery"] },
   { id: "rahul", name: "Rishi", initials: "R", color: "#8B5CF6", genres: ["Comedy", "Romance", "Sci-Fi"] },
-  { id: "family", name: "Family profile", initials: "F", color: "#06B6D4", genres: ["Family", "Animation", "Comedy"] },
 ];
 
 const ART = {
