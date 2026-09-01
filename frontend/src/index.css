@@ -168,8 +168,6 @@
   .question-card.used { opacity: .68; }
   .summary-panel { border: 1px solid rgba(255,255,255,.1); border-radius: .75rem; background: rgba(20,22,27,.72); padding: 1.25rem; }
   .summary-label { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .18em; color: #71717a; }
-  [data-testid="lesson-player"] span:has(+ [data-testid="player-demo-badge"]) { font-size: 0; }
-  [data-testid="lesson-player"] span:has(+ [data-testid="player-demo-badge"])::after { content: "Adult guide view"; font-size: .75rem; }
   .animate-rise { animation: rise .45s ease both; }
   .animate-scan { animation: scan 1.15s ease-in-out infinite; }
   .no-scrollbar { scrollbar-width: none; }

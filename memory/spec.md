@@ -5,7 +5,7 @@ CHILL is a clearly labelled concept/prototype recommendation and engagement laye
 
 ## Data model
 - `Profile`: seeded Puja (Sci-Fi, Thriller, Mystery) and Rishi (Comedy, Romance, Sci-Fi), plus session-created custom participants
-- `Content`: 20+ seeded Netflix-style movies/shows/documentaries with genres, moods, runtime, language, themes, popularity, age suitability, watched status, learning topics, and learning relevance
+- `Content`: 30+ seeded Netflix-style movies/shows/documentaries spanning comedy, horror, action, sci-fi, romance, thriller, animation, documentary, educational, and family-friendly examples, with genres, moods, runtime, language, themes, popularity, age suitability, watched status, learning topics, and learning relevance
 - `GroupPreference`: group mood, duration, language, avoid text, and selected members
 - `Recommendation`: content, deterministic score, member matches, reasons, and group fit
 - `LearningGoal`: topic, grade, duration, and objective
@@ -15,7 +15,7 @@ CHILL is a clearly labelled concept/prototype recommendation and engagement laye
 ## Key flows
 1. Home shows a Netflix-inspired shell, asks “Watch solo or watch together?”, and uses one hero button each for Watch Together and Chill & Learn with no duplicate feature cards. The only Netflix-style catalogue rows are Trending, New Releases, and Continue Watching.
 2. Watch Together: choose Couple, Friends, or Custom, select seeded profiles or add up to three custom named participants with genre preference chips, choose mood/time, receive ranked group picks, and open “Why this?” explainability. Friends and Custom groups also expose a clearly labelled demo invite with a QR-style preview, room code, copyable link, and no-login guest form; Couple does not show this invite. The invite does not live-sync across devices.
-3. Chill & Learn: an educator or parent can start with Climate Change, Space Science, History & Civil Rights, Media Literacy, or Ethics (or enter a custom topic), select a child age band, receive ranked content with dynamic learning metrics, build a lesson, use the simulated player and five timestamped questions, pause for discussion, and complete the lesson. The experience remains adult-led and children need no accounts. WALL-E remains the Climate Change demo top pick.
+3. Chill & Learn: an educator or parent can start with Climate Change, Space Science, History & Civil Rights, Media Literacy, or Ethics (or enter a custom topic), select a child age band, receive ranked content with dynamic learning metrics, and build a lesson. The lesson page prominently carries the selected age band into a real playable public CC0 demo clip. Questions stay hidden while playing; every adult-initiated pause opens one age-adjusted thought-provoking prompt with Answered and Continue Watching actions. The experience remains adult-led and children need no accounts. WALL-E remains the Climate Change demo top pick.
 
 ## Recommendation logic
 The frontend demo engine in `frontend/src/lib/chill-data.ts` is deterministic and modular. Group scoring accepts both seeded and session-created profiles, then combines individual genre compatibility, shared-genre bonus, mood, runtime, language, popularity, and explicit avoid penalties. Learning scoring combines topic relevance, age suitability, engagement potential, and popularity, with the Climate Change/WALL-E demo case pinned to the specified 94% match. It can be replaced by a real ML/LLM/embedding service later without changing the UI contract.

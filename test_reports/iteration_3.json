@@ -1,0 +1,65 @@
+{
+  "passed": 8,
+  "failed": 0,
+  "bugs": [],
+  "action_items": [],
+  "retest_needed": false,
+  "checks": [
+    {
+      "criterion": "The selected child age band carries into the lesson page",
+      "name": "age-band-carries-into-lesson",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "Selected Ages 6–8 in Chill & Learn setup, built lesson: lesson-age-band badge showed 'Ages 6–8'. Played then paused the real video via the native element; pause-discuss-modal text contained 'Ages 6–8' confirming the age band flows into the pause question too."
+    },
+    {
+      "criterion": "Lesson content uses real playable open demo video",
+      "name": "lesson-video-real-playable",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "lesson-video element currentSrc contained 'flower.webm' (MDN CC0 clip), had a native controls attribute, and requestFullscreen was a function. After play(), el.paused became false and currentTime advanced by >0.3s; real-video-timestamp text moved off '00:00'."
+    },
+    {
+      "criterion": "Questions stay hidden during active playback",
+      "name": "questions-hidden-during-playback",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "pause-discuss-modal had count 0 before playback started, and remained count 0 while video.paused was false and currentTime was actively advancing (>0.3s in)."
+    },
+    {
+      "criterion": "Pausing creates one age-adjusted thought-provoking question",
+      "name": "pause-creates-one-thought-provoking-question",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "Selected Ages 9–10, played then paused the video: exactly 1 pause-discuss-modal appeared, pause-discuss-title read 'Pause & Think', and modal text contained both 'THOUGHT-PROVOKING' and 'Ages 9–10'."
+    },
+    {
+      "criterion": "The adult can mark a pause question Answered",
+      "name": "answered-button-marks-and-increments-count",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "answered-count started at '0 answered'; answered-question-button text changed from 'Answered' to 'Answered ✓' on click; after Continue Watching, answered-count updated to '1 answered'."
+    },
+    {
+      "criterion": "Continue Watching resumes the real video",
+      "name": "continue-watching-resumes-real-video",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "After pausing and recording currentTime, clicking continue-watching-button closed the modal, video.paused became false again, and currentTime advanced past the pre-pause value by >0.3s."
+    },
+    {
+      "criterion": "Watch Together offers a broad genre showcase",
+      "name": "watch-together-broad-genre-chips",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "custom-preference-horror and custom-preference-action chips are visible and selectable (class toggled to selected border-violet state); added participant tscheck-genre-fan card text contained both 'Horror' and 'Action'. Catalogue source (chill-data.ts) has 34 seeded titles spanning comedy/horror/action/sci-fi/romance/thriller/animation/documentary/educational/family genres."
+    },
+    {
+      "criterion": "Expanded Watch Together recommendations remain explainable",
+      "name": "couple-thrilling-expanded-recommendations",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "Couple + Thrilling mood + 90–120 min duration returned 12 content-card-title-* cards (>=10). Combined content-card-meta-* text across cards contained both 'Horror' and 'Action'. First card's content-card-match-* showed 'Group Match'; opening why-this-* showed why-modal with why-modal-score containing 'Group Match' plus per-member reasoning."
+    }
+  ]
+}
