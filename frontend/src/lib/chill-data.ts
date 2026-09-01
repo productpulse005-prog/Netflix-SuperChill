@@ -69,8 +69,8 @@ export interface Lesson {
 }
 
 export const PROFILES: Profile[] = [
-  { id: "aditi", name: "Aditi", initials: "A", color: "#E50914", genres: ["Sci-Fi", "Thriller", "Mystery"] },
-  { id: "rahul", name: "Rahul", initials: "R", color: "#8B5CF6", genres: ["Comedy", "Romance", "Sci-Fi"] },
+  { id: "aditi", name: "Puja", initials: "P", color: "#E50914", genres: ["Sci-Fi", "Thriller", "Mystery"] },
+  { id: "rahul", name: "Rishi", initials: "R", color: "#8B5CF6", genres: ["Comedy", "Romance", "Sci-Fi"] },
   { id: "family", name: "Family profile", initials: "F", color: "#06B6D4", genres: ["Family", "Animation", "Comedy"] },
 ];
 
@@ -158,8 +158,10 @@ export function recommendForLearning(goal: LearningGoal): Recommendation[] {
   const topic = goal.topic.toLowerCase();
   return CATALOGUE.filter((content) => content.learningTopics.length > 0)
     .map((content) => {
-      const relevance = content.learningTopics.some((item) => topic.includes(item) || item.includes(topic)) ? content.learningRelevance : Math.max(35, content.learningRelevance - 20);
-      const score = content.id === "walle" && topic.includes("climate") ? 94 : clamp(relevance * 0.58 + content.ageSuitability * 0.22 + content.engagementPotential * 0.14 + content.popularity * 0.06);
+      const topicMatch = content.learningTopics.some((item) => topic.includes(item) || item.includes(topic));
+      const relevance = topicMatch ? Math.min(100, content.learningRelevance + 10) : Math.max(25, content.learningRelevance - 35);
+      const calculatedScore = clamp(relevance * 0.58 + content.ageSuitability * 0.22 + content.engagementPotential * 0.14 + content.popularity * 0.06);
+      const score = topic.includes("climate") ? (content.id === "walle" ? 94 : Math.min(93, calculatedScore)) : calculatedScore;
       const profile: Profile = { id: "teacher", name: "Teacher goal", initials: "✦", color: "#8B5CF6", genres: ["Educational"] };
       return { content, score, memberMatches: [{ profile, score, reasons: [`${content.learningRelevance}% learning relevance`] }], reasons: [`Strong connection to ${content.themes.slice(0, 3).join(", ").toLowerCase()}`, `Age suitability for ${goal.grade}`, `${content.engagementPotential}% engagement potential`], groupFit: [] };
     })

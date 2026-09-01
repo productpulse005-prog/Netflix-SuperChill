@@ -1,0 +1,58 @@
+{
+  "passed": 7,
+  "failed": 0,
+  "bugs": [],
+  "action_items": [],
+  "retest_needed": false,
+  "checks": [
+    {
+      "criterion": "Seeded Watch Together profiles are renamed to Puja and Rishi",
+      "name": "couple-flow-shows-puja-rishi-names",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "On members step, participant-aditi card shows 'Puja' with chips Sci-Fi/Thriller/Mystery and does NOT contain 'Aditi'; participant-rahul card shows 'Rishi' with Comedy/Romance/Sci-Fi and does NOT contain 'Rahul'."
+    },
+    {
+      "criterion": "Chill & Learn offers multiple teacher quick-start topics beyond Climate Change; each quick-start updates the teaching objective; Climate Change preserves WALL-E 94%; additional topics return relevant varied content",
+      "name": "chill-learn-topic-rename-and-quickstarts",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "learning-topic-options showed selectable quick starts. Default Climate Change -> learning-top-pick-title='WALL-E', learning-match-badge='94% Learning Match'. Selecting Space Science, History & Civil Rights, Media Literacy, Ethics each updated learning-topic-input to the respective label, pre-filled a non-empty learning-objective-input, and after Find Content returned top picks Hidden Figures, Hidden Figures, Explained, The Good Place respectively -- matching spec exactly."
+    },
+    {
+      "criterion": "Teachers can move between setup and results repeatedly; Edit goal returns to visible topic controls without fixed navigation obscuring the control, even after scrolling",
+      "name": "chill-learn-edit-goal-not-obscured-after-scroll",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "Scrolled setup form (wheel 800px), selected 90 minutes duration, clicked find-learning-content (no force) -> learning-results-heading visible. Scrolled results (wheel 600px) then clicked edit-learning-goal WITHOUT force -> click succeeded (not intercepted by fixed nav) and learning-topic-options became visible again."
+    },
+    {
+      "criterion": "Free-text teacher topics still work",
+      "name": "chill-learn-freetext-topic-works",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "Typed 'tscheck-Ocean Conservation' into learning-topic-input (not a quick-start), kept default objective, clicked find-learning-content -> learning-results-heading visible, learning-top-pick-title non-empty, learning-match-badge visible, confirming a ranked non-empty recommendation."
+    },
+    {
+      "criterion": "Existing seeded-profile Watch Together remains available (regression)",
+      "name": "couple-flow-seeded-profiles",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "Re-ran persisted check from prior iteration: Couple flow proceeds from members step to preferences step successfully with renamed profiles."
+    },
+    {
+      "criterion": "Regression: Custom Watch Together builder unaffected by rename/quick-start changes",
+      "name": "custom-recommendation-shows-names",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "Re-ran persisted check; had to update its own script (not app code) because an unrelated app fix trimmed the mood testid from 'mood--funny' to 'mood-funny' (double-dash whitespace bug noted in iteration_1 is now fixed). After updating the check's selector, group-picks-heading rendered and subtitle contained both custom participant names 'tscheck-Alex' and 'tscheck-Sam'."
+    },
+    {
+      "criterion": "Regression: Custom explainability modal unaffected by rename/quick-start changes",
+      "name": "custom-explainability-shows-member-matches",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "Re-ran persisted check with same mood-testid selector fix applied. why-modal showed 2 why-member-custom-* cards with '% match' text and participant names, confirming explainability still works."
+    }
+  ]
+}
