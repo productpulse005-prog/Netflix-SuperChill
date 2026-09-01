@@ -1,4 +1,4 @@
-import { Info, Play, Plus } from "lucide-react";
+import { Check, Info, Play, Plus } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { Recommendation } from "@/lib/chill-data";
@@ -10,9 +10,11 @@ interface ContentCardProps {
   learn?: boolean;
   showMatch?: boolean;
   progress?: number;
+  inList?: boolean;
+  onToggleList?: () => void;
 }
 
-export default function ContentCard({ recommendation, onWhy, onPlay, learn = false, showMatch = true, progress }: ContentCardProps) {
+export default function ContentCard({ recommendation, onWhy, onPlay, learn = false, showMatch = true, progress, inList = false, onToggleList }: ContentCardProps) {
   const { content } = recommendation;
   return (
     <article className="group relative min-w-[190px] max-w-[230px] flex-1 overflow-hidden rounded-md bg-[#1a1d24] shadow-lg transition duration-300 hover:-translate-y-2 hover:shadow-[0_16px_45px_rgba(0,0,0,.55)] sm:min-w-[210px]" data-testid={`content-card-${content.id}`}>
@@ -22,7 +24,7 @@ export default function ContentCard({ recommendation, onWhy, onPlay, learn = fal
         <Badge className="absolute left-3 top-3 border-0 bg-black/70 text-[10px] uppercase tracking-[.14em] text-white" data-testid={`content-card-kind-${content.id}`}>{content.kind}</Badge>
         <div className="absolute inset-x-3 bottom-3 flex items-center justify-between opacity-0 transition-opacity duration-200 group-hover:opacity-100">
           <Button size="icon-sm" className="rounded-full bg-white text-black hover:bg-white/90" onClick={onPlay} data-testid={`content-card-play-${content.id}`} aria-label={`Play ${content.title}`}><Play className="ml-0.5 size-4 fill-current" /></Button>
-          <Button variant="outline" size="icon-sm" className="rounded-full border-white/40 bg-black/40 text-white" data-testid={`content-card-add-${content.id}`} aria-label={`Add ${content.title} to My List`}><Plus className="size-4" /></Button>
+          <Button variant="outline" size="icon-sm" className="rounded-full border-white/40 bg-black/40 text-white" onClick={onToggleList} data-testid={`content-card-add-${content.id}`} aria-label={`${inList ? "Remove" : "Add"} ${content.title} ${inList ? "from" : "to"} My List`}>{inList ? <Check className="size-4" /> : <Plus className="size-4" />}</Button>
         </div>
       </div>
       <div className="space-y-2 p-3.5">
